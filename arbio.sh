@@ -35,9 +35,9 @@ echo "FONT=cyr-sun16 " >> /mnt/etc/vconsole.conf
 ln -s /usr/share/zoneinfo/Europe/Kiev /mnt/etc/localtime
 echo "localhost" >> /mnt/etc/hostname
 echo "%wheel ALL=(ALL) All" >> /mnt/etc/sudoers
-grub-install --target=i386-pc --recheck /dev/sda
-grub-mkconfig -o /mnt/boot/grub/grub.cfg
 arch-chroot /mnt
+#grub-install --target=i386-pc --recheck /dev/sda
+#grub-mkconfig -o /mnt/boot/grub/grub.cfg
 #locale-gen
 #systemctl enable NetworkManager gdm
 #mkinitcpio -p linux-zen
