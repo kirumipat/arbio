@@ -1,3 +1,4 @@
+#test arch install
 #!/bin/bash
 echo -e "n\np\n1\n\n+512M\nn\np\n2\n\n\na\n1\nw\n" | fdisk /dev/sda
 mkfs.fat -F32 -n BOOT /dev/sda1
