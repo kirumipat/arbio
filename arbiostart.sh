@@ -38,7 +38,8 @@ pacman -Syy --noconfirm
 pacstrap /mnt base base-devel btrfs-progs intel-ucode linux-zen linux-zen-headers linux-zen-docs linux-firmware grub os-prober networkmanager efibootmgr dosfstools mtools go xorg gnome gnome-shell-extensions nano wget curl git
 
 genfstab -U -p /mnt >> /mnt/etc/fstab
-sed '/ru_RU.UTF-8 UTF-8/s/^#//' -i /mnt/etc/locale.gen
+#sed '/ru_RU.UTF-8 UTF-8/s/^#//' -i /mnt/etc/locale.gen
+sed '/en_US.UTF-8 UTF-8/s/^#//' -i /mnt/etc/locale.gen
 echo "KEYMAP=ru" >> /mnt/etc/vconsole.conf
 echo "FONT=cyr-sun16 " >> /mnt/etc/vconsole.conf
 ln -s /usr/share/zoneinfo/Europe/Kiev /mnt/etc/localtime
