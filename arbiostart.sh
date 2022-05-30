@@ -16,7 +16,7 @@ btrfs su cr @cashe
 btrfs su cr @log
 btrfs su cr @tmp
 umount /dev/sda2
-mount -o noatime,compress=zstd,ssd,space_cache=v2,discard=async,subvol=@ /dev/sda2  /mnt
+mount -o noatime,compress=zstd,ssd,space_cache=v2,discard=async,subvol=@ /dev/sda2  /mnt/
 mkdir  /mnt/{boot,home,root,srv,var}
 mkdir /mnt/boot/EFI
 cd /mnt/var
