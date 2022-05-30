@@ -29,15 +29,15 @@ mount dev/sda1 /mnt/boot/EFI
 pacman -Syy
 pacstrap /mnt base base-devel btrfs-progs git  linux-zen linux-zen-headers  linux-firmware nano  wget curl   grub os-prober networkmanager efibootmgr dosfstools mtools go xorg gnome
 genfstab -U -p /mnt >> /mnt/etc/fstab
+echo "LANG=ru_RU.UTF-8" >> /mnt/etc/locale.gen
+echo "KEYMAP=ru /n FONT=cyr-sun16 " >> /mnt/etc/vconsole.conf
+ln -s /usr/share/zoneinfo/Europe/Kiev /mnt/etc/localtime
+echo "localhost" >> /mnt/etc/hostname
+echo "%wheel ALL=(ALL) All" >> /mnt/etc/sudoers
+grub-install --target=i386-pc --recheck /dev/sda
+grub-mkconfig -o /mnt/boot/grub/grub.cfg
+
 arch-chroot /mnt
-pacman -Syy
-echo "LANG=ru_RU.UTF-8" >> /etc/locale.gen
-echo "KEYMAP=ru /n FONT=cyr-sun16 " >> /etc/vconsole.conf
 locale-gen
-ln -s /usr/share/zoneinfo/Europe/Kiev /etc/localtime
-echo "localhost" >> /etc/hostname
-echo "%wheel ALL=(ALL) All" >> /etc/sudoers
 systemctl enable NetworkManager gdm
 mkinitcpio -p linux-zen
-grub-install --target=i386-pc --recheck /dev/sda
-grub-mkconfig -o /boot/grub/grub.cfg
