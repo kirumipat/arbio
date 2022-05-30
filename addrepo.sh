@@ -11,4 +11,7 @@ pacman-key --lsign-key 9AE4078033F8024D
 echo "[liquorix]" >> /etc/pacman.conf
 echo "Server = https://liquorix.net/archlinux/liquorix/x86_64/" >> /etc/pacman.conf
 
+echo "[multilib]" >> /etc/pacman.conf
+echo "Include = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf
+
 pacman -Syy --noconfirm
