@@ -2,7 +2,6 @@ grub-install --target=i386-pc --recheck /dev/sda
 grub-mkconfig -o /boot/grub/grub.cfg
 locale-gen
 localectl set-locale ru_RU.UTF-8
-#localectl set-x11-keymap --no-convert us,ru pc105 "" grp:alt_shift_toggle
 hwclock --systohc
 echo "root:123" | chpasswd
 
