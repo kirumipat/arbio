@@ -26,18 +26,35 @@ mount -o noatime,compress=zstd,ssd,space_cache=v2,discard=async,subvol=@cashe /d
 mount -o noatime,compress=zstd,ssd,space_cache=v2,discard=async,subvol=@log /dev/sda2  /mnt/var/log
 mount -o noatime,compress=zstd,ssd,space_cache=v2,discard=async,subvol=@tmp /dev/sda2  /mnt/var/tmp
 mount dev/sda1 /mnt/boot/EFI
+sed '/Color/s/^#//' -i /mnt/etc/pacman.conf
+sed '/ParalleDownloads = 5/s/^#//' -i /mnt/etc/pacman.conf
+sed '/[multilib]/s/^#//' -i /mnt/etc/pacman.conf
+sed '/Include = /etc/pacman.d/mirrorlist/s/^#//' -i /mnt/etc/pacman.conf
 pacman -Syy
-pacstrap /mnt base base-devel btrfs-progs git  linux-zen linux-zen-headers  linux-firmware nano  wget curl   grub os-prober networkmanager efibootmgr dosfstools mtools go xorg gnome
+pacman-key --recv-key FBA220DFC880C036 --keyserver keyserver.ubuntu.com
+pacman-key --lsign-key FBA220DFC880C036
+pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst' 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
+echo "[chaotic-aur]" >> /etc/pacman.conf
+echo "Include = /etc/pacman.d/chaotic-mirrorlist" >> /etc/pacman.conf
+pacman -Syy
+pacstrap /mnt base base-devel btrfs-progs mkinitcpio-btrfs mkinitcpio-firmware /
+  linux-lqx linux-lqx-headers linux-lqx-docs linux-firmware /
+   grub os-prober networkmanager efibootmgr dosfstools mtools go xorg gnome /
+    nano wget curl git
 genfstab -U -p /mnt >> /mnt/etc/fstab
-echo "ru_RU.UTF-8 UTF-8" >> /mnt/etc/locale.gen
+sed '/ru_RU.UTF-8 UTF-8/s/^#//' -i /mnt/etc/locale.gen
 echo "KEYMAP=ru" >> /mnt/etc/vconsole.conf
 echo "FONT=cyr-sun16 " >> /mnt/etc/vconsole.conf
 ln -s /usr/share/zoneinfo/Europe/Kiev /mnt/etc/localtime
 echo "localhost" >> /mnt/etc/hostname
-echo "%wheel ALL=(ALL) All" >> /mnt/etc/sudoers
+sed '/%wheel ALL=(ALL) All/s/^#//' -i /mnt/etc/sudoers
+sed '/Color/s/^#//' -i /mnt/etc/pacman.conf
+sed '/ParalleDownloads = 5/s/^#//' -i /mnt/etc/pacman.conf
+sed '/[multilib]/s/^#//' -i /mnt/etc/pacman.conf
+sed '/Include = /etc/pacman.d/mirrorlist/s/^#//' -i /mnt/etc/pacman.conf
 arch-chroot /mnt
 #grub-install --target=i386-pc --recheck /dev/sda
 #grub-mkconfig -o /mnt/boot/grub/grub.cfg
 #locale-gen
 #systemctl enable NetworkManager gdm
-#mkinitcpio -p linux-zen
+#mkinitcpio -p linux-lqx
