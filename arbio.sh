@@ -1,10 +1,13 @@
 #test arch install
 #!/bin/bash
 echo -e "n\np\n1\n\n+512M\nn\np\n2\n\n\na\n1\nw\n" | fdisk /dev/sda
+
 mkfs.fat -F32 -n BOOT /dev/sda1
 mkfs.btrfs -f -L ROOT /dev/sda2
+
 mount /dev/sda2 /mnt
 cd /mnt
+
 btrfs su cr @
 btrfs su cr @home
 btrfs su cr @root
@@ -31,16 +34,16 @@ sed '/ru_RU.UTF-8 UTF-8/s/^#//' -i /etc/locale.gen
 locale-gen
 pacman -Syy --noconfirm
 
-echo "[chaotic-aur]" >> /etc/pacman.conf
-echo "Include = /etc/pacman.d/chaotic-mirrorlist" >> /etc/pacman.conf
 pacman-key --recv-key FBA220DFC880C036 --keyserver keyserver.ubuntu.com
 pacman-key --lsign-key FBA220DFC880C036
 pacman -U --noconfirm 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst' 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
+echo "[chaotic-aur]" >> /etc/pacman.conf
+echo "Include = /etc/pacman.d/chaotic-mirrorlist" >> /etc/pacman.conf
 
-echo "[liquorix]" >> /etc/pacman.conf
-echo "Server = https://liquorix.net/archlinux/$repo/$arch" >> /etc/pacman.conf
 sudo pacman-key --keyserver hkps://keyserver.ubuntu.com --recv-keys 9AE4078033F8024D
 sudo pacman-key --lsign-key 9AE4078033F8024D
+echo "[liquorix]" >> /etc/pacman.conf
+echo "Server = https://liquorix.net/archlinux/$repo/$arch" >> /etc/pacman.conf
 
 pacman -Syy --noconfirm
 pacstrap /mnt base base-devel btrfs-progs mkinitcpio-btrfs mkinitcpio-firmware linux-lqx linux-lqx-headers linux-lqx-docs linux-firmware grub os-prober networkmanager efibootmgr dosfstools mtools go xorg gnome nano wget curl git
@@ -52,6 +55,7 @@ echo "FONT=cyr-sun16 " >> /mnt/etc/vconsole.conf
 ln -s /usr/share/zoneinfo/Europe/Kiev /mnt/etc/localtime
 echo "localhost" >> /mnt/etc/hostname
 sed '/%wheel ALL=(ALL) All/s/^#//' -i /mnt/etc/sudoers
+
 #sed '/Color/s/^#//' -i /mnt/etc/pacman.conf
 #sed '/ParalleDownloads = 5/s/^#//' -i /mnt/etc/pacman.conf
 #sed '/[multilib]/s/^#//' -i /mnt/etc/pacman.conf
