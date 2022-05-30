@@ -45,8 +45,7 @@ ln -s /usr/share/zoneinfo/Europe/Kiev /mnt/etc/localtime
 echo "localhost" >> /mnt/etc/hostname
 sed '/%wheel ALL=(ALL) All/s/^#//' -i /mnt/etc/sudoers
 
-chmod +x ./in.sh
-cp ./in.sh /mnt/home
+cp /arbio/in.sh /mnt/home
 arch-chroot /mnt
 
 
