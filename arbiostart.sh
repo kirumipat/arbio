@@ -47,7 +47,6 @@ echo "localhost" >> /mnt/etc/hostname
 sed '/%wheel ALL=(ALL) All/s/^#//' -i /mnt/etc/sudoers
 
 cp /root/arbio/in.sh /mnt/home/
-cp /root/arbio/addrepo.sh /mnt/home/
 arch-chroot /mnt
 
 
