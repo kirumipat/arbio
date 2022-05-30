@@ -37,10 +37,7 @@ pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst
 echo "[chaotic-aur]" >> /etc/pacman.conf
 echo "Include = /etc/pacman.d/chaotic-mirrorlist" >> /etc/pacman.conf
 pacman -Syy
-pacstrap /mnt base base-devel btrfs-progs mkinitcpio-btrfs mkinitcpio-firmware /
-  linux-lqx linux-lqx-headers linux-lqx-docs linux-firmware /
-   grub os-prober networkmanager efibootmgr dosfstools mtools go xorg gnome /
-    nano wget curl git
+pacstrap /mnt base base-devel btrfs-progs mkinitcpio-btrfs mkinitcpio-firmware linux-lqx linux-lqx-headers linux-lqx-docs linux-firmware grub os-prober networkmanager efibootmgr dosfstools mtools go xorg gnome nano wget curl git
 genfstab -U -p /mnt >> /mnt/etc/fstab
 sed '/ru_RU.UTF-8 UTF-8/s/^#//' -i /mnt/etc/locale.gen
 echo "KEYMAP=ru" >> /mnt/etc/vconsole.conf
