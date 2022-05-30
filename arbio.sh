@@ -32,6 +32,8 @@ pacman-key --lsign-key FBA220DFC880C036
 pacman -U --noconfirm 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst' 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
 echo "[chaotic-aur]" >> /etc/pacman.conf
 echo "Include = /etc/pacman.d/chaotic-mirrorlist" >> /etc/pacman.conf
+echo "[liquorix]" >> /etc/pacman.conf
+echo "Server = https://liquorix.net/archlinux/$repo/$arch" >> /etc/pacman.conf
 pacman -Syy --noconfirm
 pacstrap /mnt base base-devel btrfs-progs mkinitcpio-btrfs mkinitcpio-firmware linux-lqx linux-lqx-headers linux-lqx-docs linux-firmware grub os-prober networkmanager efibootmgr dosfstools mtools go xorg gnome nano wget curl git
 genfstab -U -p /mnt >> /mnt/etc/fstab
