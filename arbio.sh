@@ -41,10 +41,10 @@ echo "FONT=cyr-sun16 " >> /mnt/etc/vconsole.conf
 ln -s /usr/share/zoneinfo/Europe/Kiev /mnt/etc/localtime
 echo "localhost" >> /mnt/etc/hostname
 sed '/%wheel ALL=(ALL) All/s/^#//' -i /mnt/etc/sudoers
-sed '/Color/s/^#//' -i /mnt/etc/pacman.conf
-sed '/ParalleDownloads = 5/s/^#//' -i /mnt/etc/pacman.conf
-sed '/[multilib]/s/^#//' -i /mnt/etc/pacman.conf
-sed '/Include = /etc/pacman.d/mirrorlist/s/^#//' -i /mnt/etc/pacman.conf
+#sed '/Color/s/^#//' -i /mnt/etc/pacman.conf
+#sed '/ParalleDownloads = 5/s/^#//' -i /mnt/etc/pacman.conf
+#sed '/[multilib]/s/^#//' -i /mnt/etc/pacman.conf
+#sed '/Include = /etc/pacman.d/mirrorlist/s/^#//' -i /mnt/etc/pacman.conf
 arch-chroot /mnt
 #grub-install --target=i386-pc --recheck /dev/sda
 #grub-mkconfig -o /mnt/boot/grub/grub.cfg
