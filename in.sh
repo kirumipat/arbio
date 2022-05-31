@@ -16,10 +16,10 @@ hwclock --systohc
 read -p "ROOT-PASS " rootpas
 read -p "ADD-USER  " username
 read -p "USER-PASS " userpass
-useradd -m -g $username
-usermod -a -G wheel $username
 echo "root:$rootpass" | chpasswd
+useradd -m $username
 echo "$username:$userpass" | chpasswd
+usermod -a -G wheel $username
 #настройка mkinit
 sed 's/BINARIES\(\)/BINARIES(btrfs)/g' -i /etc/mkinitcpio.conf
 sed 's/#COMPRESSION="zstd"/COMPRESSION="zstd"/g' -i /etc/mkinitcpio.conf
