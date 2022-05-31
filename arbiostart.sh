@@ -16,7 +16,7 @@ btrfs su cr /mnt/@root
 btrfs su cr /mnt/@var
 btrfs su cr /mnt/@opt
 btrfs su cr /mnt/@tmp
-btrfs su cr /mnt/@.snapshots
+btrfs su cr /mnt/@snapshots
 #Отмантируем раздел
 umount /dev/sda2
 #Монтируем тома в разделы со сжатием и свойствами
@@ -27,7 +27,7 @@ mount -o noatime,compress=zstd,ssd,space_cache=v2,discard=async,subvol=@home /de
 mount -o noatime,compress=zstd,ssd,space_cache=v2,discard=async,subvol=@root /dev/sda2  /mnt/root
 mount -o noatime,compress=zstd,ssd,space_cache=v2,discard=async,subvol=@var /dev/sda2  /mnt/var
 mount -o noatime,compress=zstd,ssd,space_cache=v2,discard=async,subvol=@opt /dev/sda2  /mnt/opt
-mount -o noatime,compress=zstd,ssd,space_cache=v2,discard=async,subvol=@.snapshots /dev/sda2  /mnt/.snapshots
+mount -o noatime,compress=zstd,ssd,space_cache=v2,discard=async,subvol=@snapshots /dev/sda2  /mnt/.snapshots
 mount -o noatime,compress=zstd,ssd,space_cache=v2,discard=async,subvol=@tmp /dev/sda2  /mnt/tmp
 mount dev/sda1 /mnt/boot/EFI
 #Установка минимального набора
