@@ -14,11 +14,12 @@ localectl set-locale ru_RU.UTF-8
 hwclock --systohc
 #root пароль и добавление пользователя
 echo 'Добавляем пользователя'
-useradd -m -g users -G wheel -s /bin/bash $username
+useradd -m $username
 echo 'Создаем root пароль'
 passwd
 echo 'Устанавливаем пароль пользователя'
 passwd $username
+usermod -a -G wheel $username
 #настройка mkinit
 sed 's/BINARIES=\(\)/BINARIES=(btrfs)/g' -i /etc/mkinitcpio.conf
 sed 's/#COMPRESSION="zstd"/COMPRESSION="zstd"/g' -i /etc/mkinitcpio.conf
@@ -37,7 +38,7 @@ echo "[liquorix]" >> /etc/pacman.conf
 echo "Server = https://liquorix.net/archlinux/liquorix/x86_64/" >> /etc/pacman.conf
 #multilib
 sed 's/#\[multilib\]/[multilib]/g' -i /etc/pacman.conf
-sed 's/#Include = \/etc\/pacman.d\/mirrorlist/Include = /etc/pacman.d/mirrorlist/g' -i /etc/pacman.conf
+sed 's/#Include =\/etc\/pacman.d\/mirrorlist/Include = \/etc\/pacman.d\/mirrorlist/g' -i /etc/pacman.conf
 #Устанавливаем софт
 sed 's/#ParallelDownloads = 5/ParallelDownloads = 10/g' -i /etc/pacman.conf
 sed 's/#Color/Color/g' -i /etc/pacman.conf
