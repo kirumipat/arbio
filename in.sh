@@ -50,3 +50,5 @@ grub-mkconfig -o /boot/grub/grub.cfg
 systemctl enable NetworkManager gdm bluetooth ananicy-cpp
 systemctl mask NetworkManager-wait-online.service
 
+rm /in.sh
+exit
