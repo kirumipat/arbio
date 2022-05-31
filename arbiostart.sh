@@ -1,7 +1,9 @@
 #!/bin/bash
 #arch install script ARCH+BTRFS+GNOME+SNAPSHOT+SOFT
 # Создание разделов диска
-echo -e "n\np\n1\n\n+1024M\nn\np\n2\n\n\na\n1\nw\n" | fdisk /dev/sda
+lsblk
+read -p "Disk =  " AddDisk
+echo -e "n\np\n1\n\n+1024M\nn\np\n2\n\n\na\n1\nw\n" | fdisk /dev/$AddDisk
 #Форматирование разделов
 mkfs.fat -F32 -n BOOT /dev/sda1
 mkfs.btrfs -f -L ROOT /dev/sda2
