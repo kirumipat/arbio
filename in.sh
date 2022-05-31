@@ -20,7 +20,7 @@ passwd
 echo 'Устанавливаем пароль пользователя'
 passwd $username
 #настройка mkinit
-sed 's/BINARIES\(\)/BINARIES(btrfs)/g' -i /etc/mkinitcpio.conf
+sed 's/BINARIES=\(\)/BINARIES=(btrfs)/g' -i /etc/mkinitcpio.conf
 sed 's/#COMPRESSION="zstd"/COMPRESSION="zstd"/g' -i /etc/mkinitcpio.conf
 #Добавляем репозитории
 pacman -Syy --noconfirm
