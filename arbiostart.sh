@@ -41,5 +41,5 @@ genfstab -U -p /mnt >> /mnt/etc/fstab
 cp /root/arbio/in.sh /mnt/home/
 chmod +x /mnt/home/in.sh
 #переходим вновую систему и там запускаем вторую часть /home/in.sh
-arch-chroot /mnt sh -c "$(/home/in.sh)"
+arch-chroot /mnt sh -c "$(/root/arbio/in.sh)"
 
