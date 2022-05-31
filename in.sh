@@ -33,7 +33,7 @@ pacman-key --lsign-key 9AE4078033F8024D
 echo "[liquorix]" >> /etc/pacman.conf
 echo "Server = https://liquorix.net/archlinux/liquorix/x86_64/" >> /etc/pacman.conf
 #multilib
-sed 's/#[multilib]/[multilib]/g' -i /etc/pacman.conf
+sed 's/#\[multilib\]/\[multilib\]/g' -i /etc/pacman.conf
 sed 's/#Include = \/etc\/pacman.d\/mirrorlist/Include = \/etc\/pacman.d\/mirrorlist/g' -i /etc/pacman.conf
 #Устанавливаем софт
 sed 's/#ParallelDownloads = 5/ParallelDownloads = 10/g' -i /etc/pacman.conf
@@ -53,7 +53,7 @@ pacman -Sy --noconfirm deadbeef mpv
 #Нужный софт
 pacman -Sy --noconfirm htop stacer qbittorrent-nox google-chrome xdg-user-dirs p7zip unrar neofetch
 #Повышение производительности
-pacman -Sy --noconfirm ananicy-cpp ananicy-rules-git gamemode lib32-gamemode 
+pacman -Sy --noconfirm ananicy-cpp ananicy-rules-git gamemode
 #Настройк Grub загрузчика системы
 grub-install --target=i386-pc --recheck /dev/sda
 #Отключение заплаток intel
