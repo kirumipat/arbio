@@ -32,16 +32,16 @@ echo "Include = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf
 #Устанавливаем софт
 sed '/ParallelDownloads = 5/s/^#//' -i /etc/pacman.conf
 #Ядро и основные утилиты
-pacman -Sy --noconfirm mkinitcpio-firmware linux-lqx linux-lqx-headers linux-lqx-docs nano wget curl git
+pacman -Sy --noconfirm mkinitcpio-firmware linux-lqx linux-lqx-headers linux-lqx-docs nano wget curl git reflector
 #Загрузка файловая система снапшоты
 pacman -Sy --noconfirm grub-btrfs grub os-prober efibootmgr dosfstools mtools timeshift grub-customizer
 #Сеть и блютуз
-pacman -Sy --noconfirm networkmanager network-manager-applet go reflector wpa_supplicant dialog bluez bluez-utils
+pacman -Sy --noconfirm networkmanager network-manager-applet wpa_supplicant dialog bluez bluez-utils
 #Графическое окружение
 pacman -Sy --noconfirm xorg gnome gnome-shell-extensions 
 #Нужный софт
-pacman -Sy --noconfirm stacer
-#Повыгение производительности
+pacman -Sy --noconfirm stacer go
+#Повышение производительности
 pacman -Sy --noconfirm ananicy-cpp ananicy-rules-git gamemode lib32-gamemode 
 #Настройк Grub загрузчика системы
 grub-install --target=i386-pc --recheck /dev/sda
