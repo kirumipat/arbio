@@ -50,5 +50,6 @@ grub-mkconfig -o /boot/grub/grub.cfg
 systemctl enable NetworkManager gdm bluetooth ananicy-cpp
 systemctl mask NetworkManager-wait-online.service
 
+echo "Перезагрузите систему reboot -now"
 rm /in.sh
 exit
