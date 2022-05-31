@@ -56,6 +56,7 @@ pacman -Sy --noconfirm htop stacer qbittorrent-nox google-chrome xdg-user-dirs p
 pacman -Sy --noconfirm ananicy-cpp ananicy-rules-git gamemode
 #Настройк Grub загрузчика системы
 grub-install --target=i386-pc --recheck /dev/sda
+grub-mkconfig -o /boot/grub/grub.cfg
 #Отключение заплаток intel
 sed 's/GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet"/GRUB_CMDLINE_LINUX_DEFAULT="quiet rootfstype=btrfs mitigations=off nowatchdog/g' -i /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
