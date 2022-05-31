@@ -34,7 +34,7 @@ sed '/ParallelDownloads = 5/s/^#//' -i /etc/pacman.conf
 #Ядро и основные утилиты
 pacman -Sy --noconfirm mkinitcpio-firmware linux-lqx linux-lqx-headers linux-lqx-docs nano wget curl git reflector
 #Загрузка файловая система снапшоты
-pacman -Sy --noconfirm grub-btrfs grub os-prober efibootmgr dosfstools mtools timeshift grub-customizer
+pacman -Sy --noconfirm grub grub-btrfs os-prober efibootmgr dosfstools mtools timeshift grub-customizer
 #Сеть и блютуз
 pacman -Sy --noconfirm networkmanager network-manager-applet wpa_supplicant dialog bluez bluez-utils
 #Графическое окружение
