@@ -44,7 +44,7 @@ pacman -Sy --noconfirm go vscodium
 #Мультимедиа 
 pacman -Sy --noconfirm deadbeef mpv 
 #Нужный софт
-pacman -Sy --noconfirm htop stacer qbittorrent-nox google-chrome 
+pacman -Sy --noconfirm htop stacer qbittorrent-nox google-chrome xdg-user-dirs xdg-user-dirs-update p7zip unrar neofetch
 #Повышение производительности
 pacman -Sy --noconfirm ananicy-cpp ananicy-rules-git gamemode lib32-gamemode 
 #Настройк Grub загрузчика системы
