@@ -12,7 +12,13 @@ sed '/%wheel ALL=(ALL) All/s/^#//' -i /etc/sudoers
 locale-gen
 localectl set-locale ru_RU.UTF-8
 hwclock --systohc
-echo "root:123" | chpasswd
+#root пароль и добавление пользователя
+read -p "Rootpass " rootpas
+read -p "AddUsername " username
+read -p "Userpass " userpass
+useradd -m -g users -G wheel -s /bin/bash $username
+echo "root:$rootpass" | chpasswd
+echo "$username:$userpass" | chpasswd
 #Добавляем репозитории
 pacman -Syy --noconfirm
 #chaotic-aur
@@ -27,10 +33,11 @@ pacman-key --lsign-key 9AE4078033F8024D
 echo "[liquorix]" >> /etc/pacman.conf
 echo "Server = https://liquorix.net/archlinux/liquorix/x86_64/" >> /etc/pacman.conf
 #multilib
-echo "[multilib]" >> /etc/pacman.conf
-echo "Include = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf
+sed 's/#[multilib]/[multilib]/g' -i /etc/pacman.conf
+sed 's/#Include = \/etc\/pacman.d\/mirrorlist/Include = \/etc\/pacman.d\/mirrorlist/g' -i /etc/pacman.conf
 #Устанавливаем софт
-sed '/ParallelDownloads = 5/s/^#//' -i /etc/pacman.conf
+sed 's/#ParallelDownloads = 5/ParallelDownloads = 10/g' -i /etc/pacman.conf
+sed 's/#Color/Color/g' -i /etc/pacman.conf
 #Ядро и основные утилиты
 pacman -Sy --noconfirm mkinitcpio-firmware linux-lqx linux-lqx-headers linux-lqx-docs nano wget curl git reflector
 #Загрузка файловая система снапшоты
@@ -44,16 +51,18 @@ pacman -Sy --noconfirm go vscodium
 #Мультимедиа 
 pacman -Sy --noconfirm deadbeef mpv 
 #Нужный софт
-pacman -Sy --noconfirm htop stacer qbittorrent-nox google-chrome xdg-user-dirs xdg-user-dirs-update p7zip unrar neofetch
+pacman -Sy --noconfirm htop stacer qbittorrent-nox google-chrome xdg-user-dirs p7zip unrar neofetch
 #Повышение производительности
 pacman -Sy --noconfirm ananicy-cpp ananicy-rules-git gamemode lib32-gamemode 
 #Настройк Grub загрузчика системы
 grub-install --target=i386-pc --recheck /dev/sda
+#Отключение заплаток intel
+sed 's/GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet"/GRUB_CMDLINE_LINUX_DEFAULT="quiet rootfstype=btrfs mitigations=off nowatchdog/g' -i /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 #Добавление сервисов в автоpагрузку
 systemctl enable NetworkManager gdm bluetooth ananicy-cpp
 systemctl mask NetworkManager-wait-online.service
 
-echo "Перезагрузите систему reboot -now"
+echo "Enter reboot -now"
 rm /in.sh
 exit
