@@ -13,13 +13,12 @@ locale-gen
 localectl set-locale ru_RU.UTF-8
 hwclock --systohc
 #root пароль и добавление пользователя
-read -p "ROOT-PASS " rootpas
-read -p "ADD-USER  " username
-read -p "USER-PASS " userpass
-echo "root:$rootpass" | chpasswd
-useradd -m $username
-echo "$username:$userpass" | chpasswd
-usermod -a -G wheel $username
+echo 'Добавляем пользователя'
+useradd -m -g users -G wheel -s /bin/bash $username
+echo 'Создаем root пароль'
+passwd
+echo 'Устанавливаем пароль пользователя'
+passwd $username
 #настройка mkinit
 sed 's/BINARIES\(\)/BINARIES(btrfs)/g' -i /etc/mkinitcpio.conf
 sed 's/#COMPRESSION="zstd"/COMPRESSION="zstd"/g' -i /etc/mkinitcpio.conf
