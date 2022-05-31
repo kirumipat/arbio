@@ -1,5 +1,3 @@
-grub-install --target=i386-pc --recheck /dev/sda
-grub-mkconfig -o /boot/grub/grub.cfg
 locale-gen
 localectl set-locale ru_RU.UTF-8
 hwclock --systohc
@@ -21,7 +19,9 @@ echo "Server = https://liquorix.net/archlinux/liquorix/x86_64/" >> /etc/pacman.c
 echo "[multilib]" >> /etc/pacman.conf
 echo "Include = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf
 
-pacman -Sy --noconfirm mkinitcpio-firmware linux-lqx linux-lqx-headers linux-lqx-docs grub-btrfs network-manager-applet reflector wpa_supplicant dialog bluez bluez-utils ananicy-cpp ananicy-rules-git stacer gamemode lib32-gamemode timeshift gnome-shell-extensions grub-customizer
+pacman -Sy --noconfirm mkinitcpio-firmware linux-lqx linux-lqx-headers linux-lqx-docs grub-btrfs go xorg gnome gnome-shell-extensions nano wget curl git network-manager-applet reflector wpa_supplicant dialog bluez bluez-utils ananicy-cpp ananicy-rules-git stacer gamemode lib32-gamemode timeshift gnome-shell-extensions grub-customizer
+
+grub-install --target=i386-pc --recheck /dev/sda
 grub-mkconfig -o /boot/grub/grub.cfg
 
 systemctl enable NetworkManager gdm bluetooth ananicy-cpp
