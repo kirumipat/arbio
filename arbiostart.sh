@@ -1,5 +1,5 @@
-#arch install script ARCH+BTRFS+GNOME+SNAPSHOT+SOFT
 #!/bin/bash
+#arch install script ARCH+BTRFS+GNOME+SNAPSHOT+SOFT
 # Создание разделов диска
 echo -e "n\np\n1\n\n+1024M\nn\np\n2\n\n\na\n1\nw\n" | fdisk /dev/sda
 #Форматирование разделов
@@ -29,29 +29,18 @@ mount -o noatime,compress=zstd,ssd,space_cache=v2,discard=async,subvol=@.snapsho
 mount -o noatime,compress=zstd,ssd,space_cache=v2,discard=async,subvol=@tmp /dev/sda2  /mnt/tmp
 mount dev/sda1 /mnt/boot/EFI
 #Разкоментрируем русскую локаль/Генерируем локаль/Применяем локаль
-sed '/ru_RU.UTF-8 UTF-8/s/^#//' -i /etc/locale.gen
-locale-gen
-localectl set-locale ru_RU.UTF-8
+#sed '/ru_RU.UTF-8 UTF-8/s/^#//' -i /etc/locale.gen
+#locale-gen
+#localectl set-locale ru_RU.UTF-8
 #Установка минимального набора
+echo "ParallelDownloads = 10" >> /etc/pacman.conf
 pacman -Syy --noconfirm
-pacstrap /mnt base base-devel btrfs-progs intel-ucode linux-zen linux-zen-headers linux-zen-docs linux-firmware grub os-prober networkmanager efibootmgr dosfstools mtools
+pacstrap /mnt base base-devel btrfs-progs intel-ucode linux-zen linux-zen-headers linux-zen-docs linux-firmware
 #Генерация fstab
 genfstab -U -p /mnt >> /mnt/etc/fstab
-#Разкоментрируем русскую локаль
-sed '/ru_RU.UTF-8 UTF-8/s/^#//' -i /mnt/etc/locale.gen
-#установка шрифта для консоли
-echo "KEYMAP=ru" >> /mnt/etc/vconsole.conf
-echo "FONT=cyr-sun16 " >> /mnt/etc/vconsole.conf
-#Установка таймзоны
-ln -s /usr/share/zoneinfo/Europe/Kiev /mnt/etc/localtime
-#Имя hostname
-echo "localhost" >> /mnt/etc/hostname
-#права судо для группы wheel
-sed '/%wheel ALL=(ALL) All/s/^#//' -i /mnt/etc/sudoers
 #копируем фторую часть скрипта в новую систему
 cp /root/arbio/in.sh /mnt/home/
 chmod +x /mnt/home/in.sh
 #переходим вновую систему и там запускаем вторую часть /home/in.sh
-arch-chroot /mnt
-
+arch-chroot /mnt sh -c "$(/home/in.sh)"
 
