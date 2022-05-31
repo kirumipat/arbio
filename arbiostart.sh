@@ -38,8 +38,8 @@ pacstrap /mnt base base-devel btrfs-progs intel-ucode linux-zen linux-zen-header
 #Генерация fstab
 genfstab -U -p /mnt >> /mnt/etc/fstab
 #копируем фторую часть скрипта в новую систему
-cp /root/arbio/in.sh /mnt/home/
-chmod +x /mnt/home/in.sh
+cp /root/arbio/in.sh /mnt/
+chmod +x /mnt/in.sh
 #переходим вновую систему и там запускаем вторую часть /home/in.sh
-arch-chroot /mnt sh -c "$(/root/arbio/in.sh)"
+arch-chroot /mnt sh -c /in.sh
 
