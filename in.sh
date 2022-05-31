@@ -14,6 +14,7 @@ localectl set-locale ru_RU.UTF-8
 hwclock --systohc
 #root пароль и добавление пользователя
 echo 'Добавляем пользователя'
+read -p "Введите имя пользователя: " username
 useradd -m -g users -G wheel -s /bin/bash $username
 echo 'Создаем root пароль'
 passwd
