@@ -13,9 +13,9 @@ locale-gen
 localectl set-locale ru_RU.UTF-8
 hwclock --systohc
 #root пароль и добавление пользователя
-read -p "Rootpass " rootpas
-read -p "AddUsername " username
-read -p "Userpass " userpass
+read -p "ROOT-PASS " rootpas
+read -p "ADD-USER  " username
+read -p "USER-PASS " userpass
 useradd -m -g users -G wheel -s /bin/bash $username
 echo "root:$rootpass" | chpasswd
 echo "$username:$userpass" | chpasswd
