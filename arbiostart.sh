@@ -28,12 +28,8 @@ mount -o noatime,compress=zstd,ssd,space_cache=v2,discard=async,subvol=@opt /dev
 mount -o noatime,compress=zstd,ssd,space_cache=v2,discard=async,subvol=@.snapshots /dev/sda2  /mnt/.snapshots
 mount -o noatime,compress=zstd,ssd,space_cache=v2,discard=async,subvol=@tmp /dev/sda2  /mnt/tmp
 mount dev/sda1 /mnt/boot/EFI
-#Разкоментрируем русскую локаль/Генерируем локаль/Применяем локаль
-#sed '/ru_RU.UTF-8 UTF-8/s/^#//' -i /etc/locale.gen
-#locale-gen
-#localectl set-locale ru_RU.UTF-8
 #Установка минимального набора
-sed '/ParallelDownloads = 5/s/^#//' -i /etc/pacman.conf
+sed 's/#ParallelDownloads = 5/ParallelDownloads = 10/g' -i /etc/pacman.conf
 pacman -Syy --noconfirm
 pacstrap /mnt base base-devel btrfs-progs intel-ucode linux-zen linux-zen-headers linux-zen-docs linux-firmware
 #Генерация fstab
