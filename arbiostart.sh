@@ -33,6 +33,7 @@ mount dev/sda1 /mnt/boot/EFI
 #locale-gen
 #localectl set-locale ru_RU.UTF-8
 #Установка минимального набора
+sed '/ParallelDownloads = 5/s/^#//' -i /etc/pacman.conf
 pacman -Syy --noconfirm
 pacstrap /mnt base base-devel btrfs-progs intel-ucode linux-zen linux-zen-headers linux-zen-docs linux-firmware
 #Генерация fstab
