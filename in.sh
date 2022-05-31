@@ -38,9 +38,13 @@ pacman -Sy --noconfirm grub grub-btrfs os-prober efibootmgr dosfstools mtools ti
 #Сеть и блютуз
 pacman -Sy --noconfirm networkmanager network-manager-applet wpa_supplicant dialog bluez bluez-utils
 #Графическое окружение
-pacman -Sy --noconfirm xorg gnome gnome-shell-extensions 
+pacman -Sy --noconfirm xorg gnome gnome-shell-extensions
+#Програмировани 
+pacman -Sy --noconfirm go vscodium
+#Мультимедиа 
+pacman -Sy --noconfirm deadbeef mpv 
 #Нужный софт
-pacman -Sy --noconfirm stacer go
+pacman -Sy --noconfirm htop stacer qbittorrent-nox google-chrome 
 #Повышение производительности
 pacman -Sy --noconfirm ananicy-cpp ananicy-rules-git gamemode lib32-gamemode 
 #Настройк Grub загрузчика системы
