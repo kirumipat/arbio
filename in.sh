@@ -38,7 +38,7 @@ echo "[liquorix]" >> /etc/pacman.conf
 echo "Server = https://liquorix.net/archlinux/liquorix/x86_64/" >> /etc/pacman.conf
 #multilib
 sed 's/#\[multilib\]/[multilib]/g' -i /etc/pacman.conf
-sed 's/#Include = \/etc\/pacman.d\/mirrorlist/Include = \/etc\/pacman.d\/mirrorlist/g' -i /etc/pacman.conf
+sed 's/#Include = \/etc\/pacman.d\/mirrorlist/Include = /etc/pacman.d/mirrorlist/g' -i /etc/pacman.conf
 #Устанавливаем софт
 sed 's/#ParallelDownloads = 5/ParallelDownloads = 10/g' -i /etc/pacman.conf
 sed 's/#Color/Color/g' -i /etc/pacman.conf
