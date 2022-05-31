@@ -30,7 +30,6 @@ echo "Server = https://liquorix.net/archlinux/liquorix/x86_64/" >> /etc/pacman.c
 echo "[multilib]" >> /etc/pacman.conf
 echo "Include = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf
 #Устанавливаем софт
-echo "ParallelDownloads = 10" >> /etc/pacman.conf
 #Ядро и основные утилиты
 pacman -Sy --noconfirm mkinitcpio-firmware linux-lqx linux-lqx-headers linux-lqx-docs nano wget curl git
 #Загрузка файловая система снапшоты
