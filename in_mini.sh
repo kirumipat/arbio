@@ -1,5 +1,6 @@
 #Разкоментрируем русскую локаль
 sed '/ru_RU.UTF-8 UTF-8/s/^#//' -i /etc/locale.gen
+sed '/en_US.UTF-8 UTF-8/s/^#//' -i /etc/locale.gen
 #установка шрифта для консоли
 echo "KEYMAP=ru" >> /etc/vconsole.conf
 echo "FONT=cyr-sun16 " >> /etc/vconsole.conf
@@ -25,7 +26,7 @@ sed 's/#COMPRESSION="zstd"/COMPRESSION="zstd"/g' -i /etc/mkinitcpio.conf
 #Устанавливаем софт
 sed 's/#ParallelDownloads = 5/ParallelDownloads = 10/g' -i /etc/pacman.conf
 #основные утилиты
-pacman -Syy --noconfirm nano wget curl git grub grub-btrfs os-prober efibootmgr dosfstools mtools timeshift grub-customizer ntfs-3g networkmanager network-manager-applet wpa_supplicant dialog bluez bluez-utils xorg gnome gnome-shell-extensions ananicy-cpp ananicy-rules-git
+pacman -Syy --noconfirm nano wget curl git grub grub-btrfs efibootmgr dosfstools mtools timeshift grub-customizer ntfs-3g networkmanager network-manager-applet wpa_supplicant dialog bluez bluez-utils xorg gnome gnome-shell-extensions ananicy-cpp ananicy-rules-git
 #Настройк Grub загрузчика системы
 grub-install --target=i386-pc --recheck /dev/sda
 grub-mkconfig -o /boot/grub/grub.cfg
