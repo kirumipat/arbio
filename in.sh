@@ -52,11 +52,13 @@ pacman -Sy --noconfirm xorg gnome gnome-shell-extensions gnome-tweaks network-ma
 #Програмировани 
 pacman -Sy --noconfirm go vscodium
 #Мультимедиа 
-pacman -Sy --noconfirm deadbeef mpv 
+pacman -Sy --noconfirm deadbeef haruna gimp ffmpegthumbs mediainfo-gui handbrake 
 #Нужный софт
-pacman -Sy --noconfirm htop stacer qbittorrent-nox google-chrome xdg-user-dirs p7zip unrar neofetch
+pacman -Sy --noconfirm htop stacer qbittorrent-nox google-chrome xdg-user-dirs p7zip unrar neofetch kdiskmark steam protonup-qt
 #Повышение производительности
 pacman -Sy --noconfirm ananicy-cpp ananicy-rules-git gamemode
+# Шрифты орфография
+pacman -Sy --noconfirm noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra ttf-nerd-fonts-symbols hunspell aspel
 #Настройк Grub загрузчика системы
 grub-install --target=i386-pc --recheck /dev/sda
 grub-mkconfig -o /boot/grub/grub.cfg
