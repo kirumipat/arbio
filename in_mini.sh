@@ -1,6 +1,5 @@
 #Разкоментрируем русскую локаль
 sed '/ru_RU.UTF-8 UTF-8/s/^#//' -i /etc/locale.gen
-sed '/en_US.UTF-8 UTF-8/s/^#//' -i /etc/locale.gen
 #установка шрифта для консоли
 echo "KEYMAP=ru" >> /etc/vconsole.conf
 echo "FONT=cyr-sun16 " >> /etc/vconsole.conf
@@ -22,7 +21,7 @@ echo 'User pass'
 passwd $username
 
 #настройка mkinit
-sed 's/BINARIES=\(\)/BINARIES=(btrfs)/g' -i /etc/mkinitcpio.conf
+sed 's/BINARIES=()/BINARIES=(btrfs)/g' -i /etc/mkinitcpio.conf
 sed 's/#COMPRESSION="zstd"/COMPRESSION="zstd"/g' -i /etc/mkinitcpio.conf
 #Устанавливаем софт
 sed 's/#ParallelDownloads = 5/ParallelDownloads = 10/g' -i /etc/pacman.conf
@@ -35,7 +34,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 sed 's/GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet"/GRUB_CMDLINE_LINUX_DEFAULT="quiet rootfstype=btrfs mitigations=off nowatchdog"/g' -i /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 #Добавление сервисов в автоpагрузку
-systemctl enable NetworkManager gdm bluetooth ananicy-cpp
+systemctl enable NetworkManager gdm bluetooth
 systemctl mask NetworkManager-wait-online.service
 
 echo "Enter reboot -now"

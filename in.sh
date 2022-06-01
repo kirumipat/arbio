@@ -13,14 +13,14 @@ locale-gen
 localectl set-locale ru_RU.UTF-8
 hwclock --systohc
 #root пароль и добавление пользователя
-read -p "Add User : " username
-useradd -m -g users -G wheel -s /bin/bash $username
 echo 'root pass'
 passwd
+read -p "Add User : " username
+useradd -m -g users -G wheel -s /bin/bash $username
 echo 'User pass'
 passwd $username
 #настройка mkinit
-sed 's/BINARIES=\(\)/BINARIES=(btrfs)/g' -i /etc/mkinitcpio.conf
+sed 's/BINARIES=()/BINARIES=(btrfs)/g' -i /etc/mkinitcpio.conf
 sed 's/#COMPRESSION="zstd"/COMPRESSION="zstd"/g' -i /etc/mkinitcpio.conf
 #Добавляем репозитории
 pacman -Syy --noconfirm
