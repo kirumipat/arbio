@@ -50,7 +50,7 @@ pacman -Sy --noconfirm networkmanager wpa_supplicant dialog bluez bluez-utils
 #Графическое окружение
 pacman -Sy --noconfirm xorg gnome gnome-shell-extensions gnome-tweaks network-manager-applet
 #Програмировани 
-pacman -Sy --noconfirm go vscodium
+pacman -Sy --noconfirm go vscodium pycharm-community-edition intellij-idea-community-edition
 #Мультимедиа 
 pacman -Sy --noconfirm deadbeef haruna gimp ffmpegthumbs mediainfo-gui handbrake 
 #Нужный софт
@@ -60,7 +60,7 @@ pacman -Sy --noconfirm gamemode steam protonup-qt
 #Повышение производительности
 pacman -Sy --noconfirm ananicy-cpp ananicy-rules-git 
 # Шрифты орфография
-pacman -Sy --noconfirm noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra ttf-nerd-fonts-symbols hunspell aspel
+#pacman -Sy --noconfirm noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra ttf-nerd-fonts-symbols hunspell aspel
 #Настройк Grub загрузчика системы
 grub-install --target=i386-pc --recheck /dev/sda
 grub-mkconfig -o /boot/grub/grub.cfg
