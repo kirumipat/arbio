@@ -1,7 +1,7 @@
 # Arbio
 ## This script install ArchLinux
 
-### Minamal install
+### Minimal install
 
 ```bash
 pacman -Sy git

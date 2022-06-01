@@ -54,9 +54,11 @@ pacman -Sy --noconfirm go vscodium
 #Мультимедиа 
 pacman -Sy --noconfirm deadbeef haruna gimp ffmpegthumbs mediainfo-gui handbrake 
 #Нужный софт
-pacman -Sy --noconfirm htop stacer qbittorrent-nox google-chrome xdg-user-dirs p7zip unrar neofetch kdiskmark steam protonup-qt
+pacman -Sy --noconfirm htop stacer qbittorrent-nox google-chrome xdg-user-dirs p7zip unrar neofetch kdiskmark
+#Для игр
+pacman -Sy --noconfirm gamemode steam protonup-qt
 #Повышение производительности
-pacman -Sy --noconfirm ananicy-cpp ananicy-rules-git gamemode
+pacman -Sy --noconfirm ananicy-cpp ananicy-rules-git 
 # Шрифты орфография
 pacman -Sy --noconfirm noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra ttf-nerd-fonts-symbols hunspell aspel
 #Настройк Grub загрузчика системы
