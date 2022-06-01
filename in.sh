@@ -54,9 +54,9 @@ pacman -Sy --noconfirm go vscodium pycharm-community-edition intellij-idea-commu
 #Мультимедиа 
 pacman -Sy --noconfirm deadbeef haruna gimp ffmpegthumbs mediainfo-gui handbrake 
 #Нужный софт
-pacman -Sy --noconfirm htop stacer qbittorrent-nox google-chrome xdg-user-dirs p7zip unrar neofetch kdiskmark
+pacman -Sy --noconfirm htop stacer qbittorrent-nox google-chrome xdg-user-dirs p7zip unrar neofetch kdiskmark cabextract
 #Для игр
-pacman -Sy --noconfirm gamemode steam protonup-qt
+pacman -Sy --noconfirm mesa lib32-mesa mesa-utils lib32-mesa-utils opencl-mesa lib32-opencl-mesa vulcan-radeon lib32-vulcan-radeon gamemode steam protonup-qt gamescope
 #Повышение производительности
 pacman -Sy --noconfirm ananicy-cpp ananicy-rules-git 
 # Шрифты орфография
