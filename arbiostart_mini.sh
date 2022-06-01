@@ -33,7 +33,7 @@ mount dev/sda1 /mnt/boot/EFI
 #Установка минимального набора
 sed 's/#ParallelDownloads = 5/ParallelDownloads = 10/g' -i /etc/pacman.conf
 pacman -Syy --noconfirm
-pacstrap /mnt base btrfs-progs linux-zen linux-firmware grub grub-btrfs os-prober efibootmgr dosfstools mtools
+pacstrap /mnt base base-devel btrfs-progs linux-zen linux-zen-headers linux-zen-docs linux-firmware grub grub-btrfs os-prober efibootmgr dosfstools mtools
 #Генерация fstab
 genfstab -U -p /mnt >> /mnt/etc/fstab
 #копируем фторую часть скрипта в новую систему
