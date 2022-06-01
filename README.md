@@ -1,5 +1,5 @@
 # Arbio
-Скрипт установки Arch
+This script install ArchLinux
 
 ARCH
 BTRFS
