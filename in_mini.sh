@@ -38,5 +38,5 @@ systemctl enable NetworkManager gdm bluetooth
 systemctl mask NetworkManager-wait-online.service
 
 echo "Enter reboot -now"
-rm /in.sh
+rm /in_mini.sh
 exit
