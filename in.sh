@@ -8,7 +8,7 @@ ln -s /usr/share/zoneinfo/Europe/Kiev /etc/localtime
 #Имя hostname
 echo "localhost" >> /mnt/etc/hostname
 #права судо для группы wheel
-sed '/%wheel ALL=(ALL) All/s/^#//' -i /etc/sudoers
+sed 's/# %wheel ALL=(ALL:ALL) ALL/ %wheel ALL=(ALL:ALL) ALL/g' -i /etc/sudoers
 locale-gen
 localectl set-locale ru_RU.UTF-8
 hwclock --systohc
@@ -46,9 +46,9 @@ pacman -Sy --noconfirm mkinitcpio-firmware linux-lqx linux-lqx-headers linux-lqx
 #Загрузка файловая система снапшоты
 pacman -Sy --noconfirm grub grub-btrfs os-prober efibootmgr dosfstools mtools timeshift grub-customizer ntfs-3g
 #Сеть и блютуз
-pacman -Sy --noconfirm networkmanager network-manager-applet wpa_supplicant dialog bluez bluez-utils
+pacman -Sy --noconfirm networkmanager wpa_supplicant dialog bluez bluez-utils
 #Графическое окружение
-pacman -Sy --noconfirm xorg gnome gnome-shell-extensions
+pacman -Sy --noconfirm xorg gnome gnome-shell-extensions network-manager-applet
 #Програмировани 
 pacman -Sy --noconfirm go vscodium
 #Мультимедиа 
