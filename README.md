@@ -1,5 +1,5 @@
 # Arbio
-This script install ArchLinux
+## This script install ArchLinux
 
 ARCH
 BTRFS
