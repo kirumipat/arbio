@@ -48,7 +48,7 @@ pacman -Sy --noconfirm grub grub-btrfs os-prober efibootmgr dosfstools mtools ti
 #Сеть и блютуз
 pacman -Sy --noconfirm networkmanager wpa_supplicant dialog bluez bluez-utils
 #Графическое окружение
-pacman -Sy --noconfirm xorg gnome gnome-shell-extensions network-manager-applet
+pacman -Sy --noconfirm xorg gnome gnome-shell-extensions gnome-tweaks network-manager-applet
 #Програмировани 
 pacman -Sy --noconfirm go vscodium
 #Мультимедиа 
