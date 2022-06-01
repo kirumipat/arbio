@@ -13,16 +13,15 @@ locale-gen
 localectl set-locale ru_RU.UTF-8
 hwclock --systohc
 #root пароль и добавление пользователя
-echo 'Добавляем пользователя'
-read -p "Введите имя пользователя: " username
+read -p "Add User : " username
 useradd -m -g users -G wheel -s /bin/bash $username
-echo 'Создаем root пароль'
+echo 'root pass'
 passwd
-echo 'Устанавливаем пароль пользователя'
+echo 'User pass'
 passwd $username
 #настройка mkinit
-#sed 's/BINARIES=\(\)/BINARIES=(btrfs)/g' -i /etc/mkinitcpio.conf
-#sed 's/#COMPRESSION="zstd"/COMPRESSION="zstd"/g' -i /etc/mkinitcpio.conf
+sed 's/BINARIES=\(\)/BINARIES=(btrfs)/g' -i /etc/mkinitcpio.conf
+sed 's/#COMPRESSION="zstd"/COMPRESSION="zstd"/g' -i /etc/mkinitcpio.conf
 #Добавляем репозитории
 pacman -Syy --noconfirm
 #chaotic-aur
@@ -45,7 +44,7 @@ sed 's/#Color/Color/g' -i /etc/pacman.conf
 #Ядро и основные утилиты
 pacman -Sy --noconfirm mkinitcpio-firmware linux-lqx linux-lqx-headers linux-lqx-docs nano wget curl git reflector
 #Загрузка файловая система снапшоты
-pacman -Sy --noconfirm grub grub-btrfs os-prober efibootmgr dosfstools mtools timeshift grub-customizer
+pacman -Sy --noconfirm grub grub-btrfs os-prober efibootmgr dosfstools mtools timeshift grub-customizer ntfs-3g
 #Сеть и блютуз
 pacman -Sy --noconfirm networkmanager network-manager-applet wpa_supplicant dialog bluez bluez-utils
 #Графическое окружение
