@@ -5,9 +5,17 @@
 
 ```bash
 pacman -Sy git
+```
+```bash
 git clone https://github.com/kirumipat/arbio
+```
+```bash
 cd arbio
+```
+```bash
 chmod +x arbistart_mini.sh
+```
+```bash
 ./arbiostart_mini.sh
 ```
 
@@ -15,8 +23,16 @@ chmod +x arbistart_mini.sh
 
 ```bash
 pacman -Sy git
+```
+```bash
 git clone https://github.com/kirumipat/arbio
+```
+```bash
 cd arbio
+```
+```bash
 chmod +x arbistart.sh
+```
+```bash
 ./arbiostart.sh
 ```
