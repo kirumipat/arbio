@@ -8,7 +8,7 @@ ln -s /usr/share/zoneinfo/Europe/Kiev /etc/localtime
 #Имя hostname
 echo "localhost" >> /etc/hostname
 #права судо для группы wheel
-sed '/%wheel ALL=(ALL) All/s/^#//' -i /etc/sudoers
+sed 's/# %wheel ALL=(ALL:ALL) ALL/ %wheel ALL=(ALL:ALL) ALL/g' -i /etc/sudoers
 locale-gen
 localectl set-locale ru_RU.UTF-8
 hwclock --systohc
