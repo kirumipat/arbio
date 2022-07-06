@@ -28,7 +28,7 @@ mount -o noatime,compress=zstd:2,ssd,space_cache=v2,discard=async,subvol=@var /d
 mount -o noatime,compress=zstd:2,ssd,space_cache=v2,discard=async,subvol=@opt /dev/sda2  /mnt/opt
 mount -o noatime,compress=zstd:2,ssd,space_cache=v2,discard=async,subvol=@snapshots /dev/sda2  /mnt/.snapshots
 mount -o noatime,compress=zstd:2,ssd,space_cache=v2,discard=async,subvol=@tmp /dev/sda2  /mnt/tmp
-mount dev/sda1 /mnt/boot/EFI
+mount /dev/sda1 /mnt/boot/EFI
 #Установка минимального набора
 sed 's/#ParallelDownloads = 5/ParallelDownloads = 10/g' -i /etc/pacman.conf
 pacman -Syy --noconfirm
