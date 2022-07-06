@@ -6,7 +6,7 @@ echo "FONT=cyr-sun16 " >> /etc/vconsole.conf
 #Установка таймзоны
 ln -s /usr/share/zoneinfo/Europe/Kiev /etc/localtime
 #Имя hostname
-echo "localhost" >> /mnt/etc/hostname
+echo "localhost" >> /etc/hostname
 #права судо для группы wheel
 sed '/%wheel ALL=(ALL) All/s/^#//' -i /etc/sudoers
 locale-gen
