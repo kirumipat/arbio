@@ -3,12 +3,12 @@
 # Создание разделов диска
 lsblk
 read -p "Disk =  " AddDisk
-DN1=$AddDisk"1"
-DN2=$AddDisk"2"
+DN1=$AddDisk"p1"
+DN2=$AddDisk"p2"
 echo -e "n\np\n1\n\n+1024M\nn\np\n2\n\n\na\n1\nw\n" | fdisk /dev/$AddDisk
 #Форматирование разделов
-mkfs.fat -F32 -n BOOT /dev/$AddDisk$DiskN1
-mkfs.btrfs -f -L ROOT /dev/$AddDisk$DiskN2
+mkfs.fat -F32 -n BOOT /dev/$DN1
+mkfs.btrfs -f -L ROOT /dev/$DN2
 #Монтируем раздел
 mount /dev/$DN2 /mnt
 #Создаём BTRFS тома
