@@ -31,7 +31,7 @@ mount -o noatime,compress=zstd:2,ssd,space_cache=v2,discard=async,subvol=@var /d
 mount -o noatime,compress=zstd:2,ssd,space_cache=v2,discard=async,subvol=@opt /dev/$DN2  /mnt/opt
 mount -o noatime,compress=zstd:2,ssd,space_cache=v2,discard=async,subvol=@snapshots /dev/$DN2  /mnt/.snapshots
 mount -o noatime,compress=zstd:2,ssd,space_cache=v2,discard=async,subvol=@tmp /dev/$DN2  /mnt/tmp
-#mount /dev/$DN1 /mnt/boot/EFI
+mount /dev/$DN1 /mnt/boot/
 #Установка минимального набора
 sed 's/Architecture = auto/Architecture = auto \n ILoveCandy/g' -i /etc/pacman.conf
 sed 's/#ParallelDownloads = 5/ParallelDownloads = 10/g' -i /etc/pacman.conf
