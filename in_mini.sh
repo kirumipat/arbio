@@ -28,6 +28,7 @@ sed 's/Architecture = auto/Architecture = auto \n ILoveCandy/g' -i /etc/pacman.c
 sed 's/#ParallelDownloads = 5/ParallelDownloads = 10/g' -i /etc/pacman.conf
 sed 's/#Color/Color/g' -i /etc/pacman.conf
 #основные утилиты
+reflector --latest 5 --protocol https  --country Germany --sort rate --save /etc/pacman.d/mirrorlist
 pacman -Syy --noconfirm nano wget curl git grub grub-btrfs efibootmgr dosfstools mtools ntfs-3g networkmanager openssh network-manager-applet wpa_supplicant dialog bluez bluez-utils xorg gnome gnome-shell-extensions
 #Настройк Grub загрузчика системы
 grub-install --target=i386-pc --recheck /dev/nvme0n1
