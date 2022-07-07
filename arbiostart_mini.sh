@@ -32,7 +32,7 @@ mount -o noatime,compress=zstd:2,ssd,space_cache=v2,discard=async,subvol=@var /d
 mount -o noatime,compress=zstd:2,ssd,space_cache=v2,discard=async,subvol=@opt /dev/$DN2  /mnt/opt
 mount -o noatime,compress=zstd:2,ssd,space_cache=v2,discard=async,subvol=@snapshots /dev/$DN2  /mnt/.snapshots
 mount -o noatime,compress=zstd:2,ssd,space_cache=v2,discard=async,subvol=@tmp /dev/$DN2  /mnt/tmp
-#mount -o noatime,compress=zstd:2,ssd,space_cache=v2,discard=async,subvol=@shara /dev/sda  /mnt/shara
+#mount -o subvol=@shara /dev/sda  /mnt/shara
 mount /dev/$DN1 /mnt/boot/
 #Установка минимального набора
 sed 's/Architecture = auto/Architecture = auto \n ILoveCandy/g' -i /etc/pacman.conf
