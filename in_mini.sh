@@ -28,7 +28,7 @@ sed 's/#ParallelDownloads = 5/ParallelDownloads = 10/g' -i /etc/pacman.conf
 #основные утилиты
 pacman -Syy --noconfirm nano wget curl git grub grub-btrfs efibootmgr dosfstools mtools ntfs-3g networkmanager openssh network-manager-applet wpa_supplicant dialog bluez bluez-utils xorg gnome gnome-shell-extensions
 #Настройк Grub загрузчика системы
-grub-install --target=i386-pc --recheck /dev/sda
+grub-install --target=i386-pc --recheck /dev/nvme0n1
 grub-mkconfig -o /boot/grub/grub.cfg
 #Отключение заплаток intel
 sed 's/GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet"/GRUB_CMDLINE_LINUX_DEFAULT="quiet rootfstype=btrfs mitigations=off nowatchdog"/g' -i /etc/default/grub
