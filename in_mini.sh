@@ -24,6 +24,7 @@ passwd $username
 sed 's/BINARIES=()/BINARIES=(btrfs)/g' -i /etc/mkinitcpio.conf
 sed 's/#COMPRESSION="zstd"/COMPRESSION="zstd"/g' -i /etc/mkinitcpio.conf
 #Устанавливаем софт
+sed 's/Architecture = auto/Architecture = auto \n ILoveCandy/g' -i /etc/pacman.conf
 sed 's/#ParallelDownloads = 5/ParallelDownloads = 10/g' -i /etc/pacman.conf
 #основные утилиты
 pacman -Syy --noconfirm nano wget curl git grub grub-btrfs efibootmgr dosfstools mtools ntfs-3g networkmanager openssh network-manager-applet wpa_supplicant dialog bluez bluez-utils xorg gnome gnome-shell-extensions
