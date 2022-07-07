@@ -37,7 +37,7 @@ sed 's/Architecture = auto/Architecture = auto \n ILoveCandy/g' -i /etc/pacman.c
 sed 's/#ParallelDownloads = 5/ParallelDownloads = 10/g' -i /etc/pacman.conf
 sed 's/#Color/Color/g' -i /etc/pacman.conf
 pacman -Syy --noconfirm
-reflector --latest 15 --protocol https  --country Germany --sort rate --save /etc/pacman.d/mirrorlist
+reflector --latest 15 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
 pacstrap /mnt base base-devel btrfs-progs linux-zen linux-zen-headers linux-zen-docs linux-firmware grub grub-btrfs os-prober efibootmgr dosfstools mtools reflector
 #Генерация fstab
 genfstab -U -p /mnt >> /mnt/etc/fstab
