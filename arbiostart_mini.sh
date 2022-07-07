@@ -19,6 +19,7 @@ btrfs su cr /mnt/@var
 btrfs su cr /mnt/@opt
 btrfs su cr /mnt/@tmp
 btrfs su cr /mnt/@snapshots
+btrfs su cr /mnt/@shara
 #Отмантируем раздел
 umount /dev/$DN2
 #Монтируем тома в разделы со сжатием и свойствами
@@ -30,7 +31,7 @@ mount -o noatime,compress=zstd:2,ssd,space_cache=v2,discard=async,subvol=@var /d
 mount -o noatime,compress=zstd:2,ssd,space_cache=v2,discard=async,subvol=@opt /dev/$DN2  /mnt/opt
 mount -o noatime,compress=zstd:2,ssd,space_cache=v2,discard=async,subvol=@snapshots /dev/$DN2  /mnt/.snapshots
 mount -o noatime,compress=zstd:2,ssd,space_cache=v2,discard=async,subvol=@tmp /dev/$DN2  /mnt/tmp
-mount /dev/$DN1 /mnt/boot/EFI
+#mount /dev/$DN1 /mnt/boot/EFI
 #Установка минимального набора
 sed 's/#ParallelDownloads = 5/ParallelDownloads = 10/g' -i /etc/pacman.conf
 pacman -Syy --noconfirm
