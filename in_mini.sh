@@ -13,8 +13,8 @@ locale-gen
 localectl set-locale ru_RU.UTF-8
 hwclock --systohc
 #root пароль и добавление пользователя
-echo 'root pass'
-passwd
+#echo 'root pass'
+#passwd
 read -p "Add User : " username
 useradd -m -g users -G wheel -s /bin/bash $username
 echo 'User pass'
@@ -26,7 +26,7 @@ sed 's/#COMPRESSION="zstd"/COMPRESSION="zstd"/g' -i /etc/mkinitcpio.conf
 #Устанавливаем софт
 sed 's/#ParallelDownloads = 5/ParallelDownloads = 10/g' -i /etc/pacman.conf
 #основные утилиты
-pacman -Syy --noconfirm nano wget curl git grub grub-btrfs efibootmgr dosfstools mtools ntfs-3g networkmanager network-manager-applet wpa_supplicant dialog bluez bluez-utils xorg gnome gnome-shell-extensions
+pacman -Syy --noconfirm nano wget curl git grub grub-btrfs efibootmgr dosfstools mtools ntfs-3g networkmanager openssh network-manager-applet wpa_supplicant dialog bluez bluez-utils xorg gnome gnome-shell-extensions
 #Настройк Grub загрузчика системы
 grub-install --target=i386-pc --recheck /dev/sda
 grub-mkconfig -o /boot/grub/grub.cfg
@@ -34,7 +34,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 sed 's/GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet"/GRUB_CMDLINE_LINUX_DEFAULT="quiet rootfstype=btrfs mitigations=off nowatchdog"/g' -i /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 #Добавление сервисов в автоpагрузку
-systemctl enable NetworkManager gdm bluetooth
+systemctl enable NetworkManager sshd gdm bluetooth
 systemctl mask NetworkManager-wait-online.service
 
 echo "Enter reboot -now"
