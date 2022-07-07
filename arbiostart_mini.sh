@@ -20,7 +20,6 @@ btrfs su cr /mnt/@var
 btrfs su cr /mnt/@opt
 btrfs su cr /mnt/@tmp
 btrfs su cr /mnt/@snapshots
-btrfs su cr /mnt/@shara
 #Отмантируем раздел
 umount /dev/$DN2
 #Монтируем тома в разделы со сжатием и свойствами
