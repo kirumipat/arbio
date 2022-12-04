@@ -42,7 +42,7 @@ reflector --latest 15 --protocol https --sort rate --save /etc/pacman.d/mirrorli
 pacstrap /mnt base base-devel btrfs-progs linux-zen linux-zen-headers linux-zen-docs linux-firmware grub grub-btrfs os-prober efibootmgr dosfstools mtools reflector
 #Генерация fstab
 genfstab -U -p /mnt >> /mnt/etc/fstab
-#копируем фторую часть скрипта в новую систему
+#копируем вторую часть скрипта в новую систему
 cp /root/arbio/in_mini.sh /mnt/
 chmod +x /mnt/in_mini.sh
 #переходим в новую систему и там запускаем вторую часть /in.sh
