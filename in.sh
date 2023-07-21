@@ -43,7 +43,7 @@ sed 's/Architecture = auto/Architecture = auto \n ILoveCandy/g' -i /etc/pacman.c
 sed 's/#ParallelDownloads = 5/ParallelDownloads = 10/g' -i /etc/pacman.conf
 sed 's/#Color/Color/g' -i /etc/pacman.conf
 #Ядро и основные утилиты
-pacman -Sy --noconfirm mkinitcpio-firmware linux-lqx linux-lqx-headers linux-lqx-docs nano wget curl git reflector
+pacman -Sy --noconfirm mkinitcpio-firmware linux-lqx linux-lqx-headers linux-lqx-docs nano wget curl git reflector sof-firmware
 #Загрузка файловая система снапшоты
 pacman -Sy --noconfirm grub grub-btrfs os-prober efibootmgr dosfstools mtools timeshift grub-customizer ntfs-3g
 #Сеть и блютуз
